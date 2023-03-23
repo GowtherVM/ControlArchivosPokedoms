@@ -4,63 +4,36 @@
  */
 package com.mycompany.pokedoms;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Admin
  */
 public class PokedomDb {
 
-    private Pokedom array[] = new Pokedom[100];
-    private int indice = 0;
-    private String familias[] = new String[100];
-    private String condicion = "False";
-    private int indice2 = 0;
-    private int i = 0;
+    private ArrayList<Pokedom> pokedomlist = new ArrayList();
+    private ArrayList<String> familiaslist = new ArrayList();
 
     public Pokedom describe(String nom) {
-        for (int i = 0; i < array.length; i++) {
-            if (nom.equalsIgnoreCase(array[i].getNom())) {
-                return array[i];
-
-            }
-        }
         return null;
     }
 
     public void insert(Pokedom nuevo) {
-        if(indice < 100){
-          array[indice] = nuevo;  
-        }
-        
-        indice++;
-
+        pokedomlist.add(nuevo);
     }
 
-    public void familias(String familia) {
-
-        i = 0;
-        while (i < familias.length) {
-            if (familias[i] != (null)) {
-                if (familias[i].equals(familia)) {
-                    condicion = "True";
-                    i++;
-
-                } else {
-                    condicion = "False";
-                    i = familias.length;
-                }
-            } else {
-                i++;
+    public void familias(String familianueva) {
+        boolean comprobar = false;
+        for (String familia : familiaslist) {
+            if (familia.equalsIgnoreCase(familianueva)) {
+                comprobar = true;
             }
-
-            if (condicion.equals("False")) {
-                familias[indice2] = familia;
-                indice2++;
-            }
-
         }
-       
-       
-}
+        if (comprobar = false) {
+            familiaslist.add(familianueva);
+        }
+
+    }
 
 }
