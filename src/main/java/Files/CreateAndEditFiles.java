@@ -16,17 +16,9 @@ import java.io.PrintWriter;
 public class CreateAndEditFiles {
 
     private File file;
-    private String contenido;
-    
 
-    public CreateAndEditFiles(String ruta,String contenido) {
-        this.file = new File(ruta);
-        this.contenido = contenido;
-
-
-    }
-
-    public int comprobarRuta() throws IOException {
+    public int comprobarRuta(String ruta) throws IOException {
+        file = new File(ruta);
         if (!file.exists()) {
             file.createNewFile();
             return 11;
@@ -34,10 +26,11 @@ public class CreateAndEditFiles {
         return 10;
     }
 
-    public void añadirPokedom() throws IOException {
-        FileWriter archivo = new FileWriter(this.file, true);
+    public void añadirPokedom(String ruta, String contenido) throws IOException {
+        file = new File(ruta);
+        FileWriter archivo = new FileWriter(file, true);
         PrintWriter write = new PrintWriter(archivo);
-        write.println(this.contenido);
+        write.println(contenido);
         write.close();
     }
 }
